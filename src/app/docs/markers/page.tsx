@@ -3,6 +3,11 @@ import { ComponentPreview } from "../_components/component-preview";
 import { MarkersExample } from "../_components/examples/markers-example";
 import { PopupExample } from "../_components/examples/popup-example";
 import { getExampleSource } from "@/lib/get-example-source";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Markers",
+};
 
 export default function MarkersPage() {
   const markersSource = getExampleSource("markers-example.tsx");

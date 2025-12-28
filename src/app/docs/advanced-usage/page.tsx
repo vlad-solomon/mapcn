@@ -10,6 +10,11 @@ import { AdvancedUsageExample } from "../_components/examples/advanced-usage-exa
 import { CustomLayerExample } from "../_components/examples/custom-layer-example";
 import { CodeBlock } from "../_components/code-block";
 import { getExampleSource } from "@/lib/get-example-source";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Advanced Usage",
+};
 
 const useMapCode = `import { Map, useMap } from "@/components/ui/map";
 

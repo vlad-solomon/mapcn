@@ -6,6 +6,7 @@ import {
   DocsSection,
 } from "../_components/docs";
 import { CodeBlock } from "../_components/code-block";
+import { Metadata } from "next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "site-url-here";
 
@@ -23,6 +24,10 @@ export function MyMap() {
     </Card>
   );
 }`;
+
+export const metadata: Metadata = {
+  title: "Installation",
+};
 
 export default function InstallationPage() {
   return (

@@ -1,5 +1,6 @@
 import { Zap, Moon, Puzzle, Code } from "lucide-react";
 import { DocsLayout, DocsSection, DocsLink } from "./_components/docs";
+import { Metadata } from "next";
 
 const features = [
   {
@@ -24,6 +25,10 @@ const features = [
     description: "Full type safety with comprehensive TypeScript support.",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Introduction",
+};
 
 export default function IntroductionPage() {
   return (

@@ -3,6 +3,11 @@ import { ComponentPreview } from "../_components/component-preview";
 import { RouteExample } from "../_components/examples/route-example";
 import { OsrmRouteExample } from "../_components/examples/osrm-route-example";
 import { getExampleSource } from "@/lib/get-example-source";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Routes",
+};
 
 export default function RoutesPage() {
   const routeSource = getExampleSource("route-example.tsx");

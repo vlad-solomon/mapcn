@@ -2,6 +2,11 @@ import { DocsLayout, DocsSection, DocsCode } from "../_components/docs";
 import { ComponentPreview } from "../_components/component-preview";
 import { BasicMapExample } from "../_components/examples/basic-map-example";
 import { getExampleSource } from "@/lib/get-example-source";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Basic Map",
+};
 
 export default function BasicMapPage() {
   const basicMapSource = getExampleSource("basic-map-example.tsx");

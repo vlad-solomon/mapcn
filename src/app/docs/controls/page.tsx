@@ -2,6 +2,11 @@ import { DocsLayout, DocsSection, DocsCode } from "../_components/docs";
 import { ComponentPreview } from "../_components/component-preview";
 import { MapControlsExample } from "../_components/examples/map-controls-example";
 import { getExampleSource } from "@/lib/get-example-source";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Map Controls",
+};
 
 export default function ControlsPage() {
   const controlsSource = getExampleSource("map-controls-example.tsx");

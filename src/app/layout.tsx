@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "mapcn - Beautiful maps made simple",
-    template: "%s | mapcn",
+    template: "%s - mapcn",
   },
   description: siteDescription,
   keywords: [

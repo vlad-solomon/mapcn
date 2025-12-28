@@ -10,9 +10,9 @@
   </p>
   
   <p>
-    <a href="https://mapcn.dev">Documentation</a> •
-    <a href="https://mapcn.dev/docs">Get Started</a> •
-    <a href="https://mapcn.dev/docs/basic-map">Examples</a>
+    <a href="https://mapcn.vercel.app">Get Started</a> •
+    <a href="https://mapcn.vercel.app/docs">Documentation</a> •
+    <a href="https://mapcn.vercel.app/docs/basic-map">Examples</a>
   </p>
 </div>
 

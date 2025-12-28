@@ -7,6 +7,11 @@ import {
   DocsPropTable,
 } from "../_components/docs";
 import { CodeBlock } from "../_components/code-block";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "API Reference",
+};
 
 const anatomyCode = `<Map>
   <MapMarker longitude={...} latitude={...}>

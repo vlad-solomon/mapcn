@@ -2,6 +2,11 @@ import { DocsLayout, DocsSection, DocsCode } from "../_components/docs";
 import { ComponentPreview } from "../_components/component-preview";
 import { StandalonePopupExample } from "../_components/examples/standalone-popup-example";
 import { getExampleSource } from "@/lib/get-example-source";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Popups",
+};
 
 export default function PopupsPage() {
   const popupSource = getExampleSource("standalone-popup-example.tsx");
