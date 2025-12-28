@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, BookOpen, Code, Settings, Braces } from "lucide-react";
+import {
+  Map,
+  BookOpen,
+  Code,
+  Settings,
+  Braces,
+  MapPin,
+  MessageSquare,
+  Route,
+  Wrench,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -36,6 +46,10 @@ const navigation = [
     items: [
       { title: "Basic Map", href: "/docs/basic-map", icon: Map },
       { title: "Map Controls", href: "/docs/controls", icon: Settings },
+      { title: "Markers", href: "/docs/markers", icon: MapPin },
+      { title: "Popups", href: "/docs/popups", icon: MessageSquare },
+      { title: "Routes", href: "/docs/routes", icon: Route },
+      { title: "Advanced Usage", href: "/docs/advanced-usage", icon: Wrench },
     ],
   },
 ];
