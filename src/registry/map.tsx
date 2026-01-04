@@ -74,7 +74,7 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   const [isLoaded, setIsLoaded] = useState(false);
   const [isStyleLoaded, setIsStyleLoaded] = useState(false);
   const { resolvedTheme } = useTheme();
-  const prevThemeRef = useRef<string | undefined>(undefined);
+  const currentStyleRef = useRef<MapStyleOption | null>(null);
 
   const mapStyles = useMemo(
     () => ({
@@ -89,12 +89,13 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const mapStyle =
+    const initialStyle =
       resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light;
+    currentStyleRef.current = initialStyle;
 
-    const mapInstance = new MapLibreGL.Map({
+    const map = new MapLibreGL.Map({
       container: containerRef.current,
-      style: mapStyle,
+      style: initialStyle,
       renderWorldCopies: false,
       attributionControl: {
         compact: true,
@@ -105,16 +106,14 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
     const styleDataHandler = () => setIsStyleLoaded(true);
     const loadHandler = () => setIsLoaded(true);
 
-    mapInstance.on("load", loadHandler);
-    mapInstance.on("styledata", styleDataHandler);
-
-    prevThemeRef.current = resolvedTheme;
-    setMapInstance(mapInstance);
+    map.on("load", loadHandler);
+    map.on("styledata", styleDataHandler);
+    setMapInstance(map);
 
     return () => {
-      mapInstance.off("load", loadHandler);
-      mapInstance.off("styledata", styleDataHandler);
-      mapInstance.remove();
+      map.off("load", loadHandler);
+      map.off("styledata", styleDataHandler);
+      map.remove();
       setIsLoaded(false);
       setIsStyleLoaded(false);
       setMapInstance(null);
@@ -123,16 +122,21 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   }, []);
 
   useEffect(() => {
-    if (!mapInstance) return;
-    if (prevThemeRef.current === resolvedTheme) return;
+    if (!mapInstance || !resolvedTheme) return;
 
-    prevThemeRef.current = resolvedTheme;
+    const newStyle =
+      resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light;
+
+    if (currentStyleRef.current === newStyle) return;
+
+    currentStyleRef.current = newStyle;
     setIsStyleLoaded(false);
 
-    mapInstance.setStyle(
-      resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light,
-      { diff: true }
-    );
+    const frameId = requestAnimationFrame(() => {
+      mapInstance.setStyle(newStyle, { diff: true });
+    });
+
+    return () => cancelAnimationFrame(frameId);
   }, [mapInstance, resolvedTheme, mapStyles]);
 
   const isLoading = !isLoaded || !isStyleLoaded;
